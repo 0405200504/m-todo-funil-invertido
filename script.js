@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Efeito sutil de mouse follow no container de vídeo
+    // Efeito sutil de mouse follow no container de vídeo (Desabilitado para evitar conflito com Fullscreen)
+    /*
     const videoContainer = document.querySelector('.video-container');
     if (videoContainer) {
         videoContainer.addEventListener('mousemove', (e) => {
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             videoContainer.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
         });
     }
+    */
 
     // Lógica para mostrar o botão de checkout com delay (12:49 = 769 segundos)
     const delayInSeconds = 769;
