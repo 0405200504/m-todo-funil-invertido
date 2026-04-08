@@ -22,5 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
         videoContainer.addEventListener('mouseleave', () => {
             videoContainer.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
         });
+    // Lógica para mostrar o botão de checkout com delay (12:49 = 769 segundos)
+    const delayInSeconds = 769;
+    const ctaSection = document.getElementById('cta-section');
+
+    if (ctaSection) {
+        setTimeout(() => {
+            ctaSection.style.display = 'flex';
+            ctaSection.classList.add('animate-fade-up');
+        }, delayInSeconds * 1000);
     }
 });
