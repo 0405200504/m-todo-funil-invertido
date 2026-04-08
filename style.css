@@ -96,8 +96,14 @@ body {
     position: relative;
     width: 100%;
     background: #000;
-    border-radius: 19px;
+    border-radius: 20px;
     z-index: 1;
+    overflow: hidden; /* Necessário para os cantos arredondados */
+}
+
+vturb-smartplayer {
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 @keyframes neonPulse {
