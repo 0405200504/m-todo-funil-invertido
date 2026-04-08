@@ -1,0 +1,157 @@
+:root {
+    --primary-color: #C4FF00;
+    --bg-color: #000000;
+    --text-color: #FFFFFF;
+    --secondary-text: #A0A0A0;
+    --font-main: 'Sora', sans-serif;
+    --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    line-height: 1.4;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Start from top to allow video to be higher */
+    text-align: center;
+}
+
+.header {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    max-width: 800px;
+}
+
+.headline {
+    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Smaller as requested */
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+}
+
+.video-section {
+    width: 100%;
+    max-width: 850px;
+    margin-bottom: 40px;
+}
+
+/* Futuristic Border Animation */
+.video-border-wrap {
+    position: relative;
+    padding: 2px; /* Border thickness */
+    border-radius: 22px;
+    background: rgba(196, 255, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-border-wrap::before {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: conic-gradient(
+        transparent, 
+        transparent, 
+        transparent, 
+        var(--primary-color)
+    );
+    animation: rotate 4s linear infinite;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.footer {
+    margin-top: auto;
+    padding: 40px 0;
+    color: var(--secondary-text);
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+/* Animations */
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fade-up {
+    animation: fadeUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+        justify-content: center; /* Center everything on mobile */
+    }
+    
+    .header {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .headline {
+        font-size: 1.5rem;
+        padding: 0 5px;
+    }
+
+    .video-section {
+        margin-top: -10px; /* Pull video up slightly more */
+    }
+}
