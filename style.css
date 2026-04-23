@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --primary-color: #C4FF00;
     --bg-color: #000000;
@@ -106,6 +110,14 @@ vturb-smartplayer {
     overflow: hidden;
 }
 
+/* Novo CTA abaixo da VSL */
+.vsl-cta-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px 50px;
+}
+
 @keyframes neonPulse {
     0% { box-shadow: 0 0 10px rgba(196, 255, 0, 0.1); }
     50% { box-shadow: 0 0 25px rgba(196, 255, 0, 0.3); }
@@ -124,20 +136,19 @@ vturb-smartplayer {
 .cta-button {
     background: var(--primary-color);
     color: #000;
-    padding: 22px 45px;
-    font-size: 1.4rem;
+    padding: 20px 45px;
+    font-size: 1.25rem;
     font-weight: 800;
     text-decoration: none;
     border-radius: 50px;
     text-transform: uppercase;
-    box-shadow: 0 10px 40px rgba(196, 255, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: var(--transition-smooth);
-    animation: bounce 2s infinite;
 }
 
 .cta-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 50px rgba(196, 255, 0, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(196, 255, 0, 0.3);
 }
 
 .cta-subtitle {
@@ -203,5 +214,606 @@ vturb-smartplayer {
 
     .video-section {
         margin-top: -10px; /* Pull video up slightly more */
+    }
+}
+
+/* ==============================================
+   SEÇÃO: O CAMINHO — Funil Invertido (Timeline)
+   ============================================== */
+.caminho-section {
+    width: 100%;
+    max-width: 620px;
+    margin: 70px auto 0;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.caminho-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    opacity: 0.85;
+}
+
+.caminho-title {
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+}
+
+.caminho-subtitle {
+    font-size: 1rem;
+    color: var(--secondary-text);
+    margin-bottom: 50px;
+    line-height: 1.6;
+}
+
+/* Timeline */
+.caminho-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding-left: 28px;
+    text-align: left;
+}
+
+/* Linha vertical contínua */
+.timeline-linha {
+    position: absolute;
+    left: 45px;
+    top: 50px;
+    bottom: 50px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(196, 255, 0, 0.2) 15%, rgba(196, 255, 0, 0.2) 85%, transparent);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    padding: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Indicador lateral minimalista */
+.timeline-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90px;
+    flex-shrink: 0;
+}
+
+.step-num {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.05em;
+    opacity: 0.3;
+    transition: all 0.4s ease;
+    text-shadow: 0 0 20px rgba(196, 255, 0, 0.4);
+}
+
+.timeline-dot {
+    width: 8px;
+    height: 8px;
+    background: #000;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(196, 255, 0, 0.4);
+}
+
+/* Estilo do Card Premium */
+.timeline-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-left: 3px solid rgba(196, 255, 0, 0.4);
+    border-radius: 14px;
+    padding: 24px 28px;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+.timeline-card:hover {
+    transform: translateX(12px);
+    background: rgba(255, 255, 255, 0.04);
+    border-left-color: var(--primary-color);
+    box-shadow: 25px 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.timeline-card:hover .step-num {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.timeline-card p {
+    font-size: 1.05rem;
+    color: var(--secondary-text);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.timeline-card strong {
+    color: var(--text-color);
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+}
+
+@media (max-width: 768px) {
+    .caminho-timeline { padding: 0 5px; }
+    .timeline-linha { left: 25px; }
+    .timeline-indicator { width: 50px; }
+    .step-num { font-size: 1.2rem; }
+    .timeline-item { gap: 12px; }
+    .timeline-card { padding: 20px; gap: 15px; border-radius: 12px; }
+    .card-icon { width: 38px; height: 38px; }
+    .card-icon svg { width: 18px; height: 18px; }
+    .timeline-card strong { font-size: 1.05rem; }
+    .timeline-card p { font-size: 0.92rem; }
+}
+
+/* ==============================================
+   SEÇÃO: CARROSSEL — Área de Membros
+   ============================================== */
+.membros-section {
+    width: 100%;
+    max-width: 100%;
+    margin: 70px 0 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.membros-header {
+    max-width: 960px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+}
+
+.membros-title {
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+}
+
+.membros-subtitle {
+    font-size: 1rem;
+    color: var(--secondary-text);
+}
+
+/* Esteira Infinita (Marquee) */
+.esteira-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    /* Fade nas bordas para efeito premium */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 10%,
+        black 90%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 10%,
+        black 90%,
+        transparent 100%
+    );
+}
+
+.esteira-track {
+    display: flex;
+    gap: 14px;
+    width: max-content;
+    will-change: transform;
+}
+
+/* Faixa 1: move para a esquerda */
+.esteira-track--left {
+    animation: esteira-left 30s linear infinite;
+}
+
+/* Faixa 2: move para a direita */
+.esteira-track--right {
+    animation: esteira-right 30s linear infinite;
+}
+
+/* Pausar ao hover */
+.esteira-wrapper:hover .esteira-track {
+    animation-play-state: paused;
+}
+
+@keyframes esteira-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+@keyframes esteira-right {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+}
+
+/* Card individual */
+.esteira-card {
+    flex-shrink: 0;
+    width: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(196, 255, 0, 0.12);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    background: #0a0a0a;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.esteira-card:hover {
+    transform: scale(1.04) translateY(-3px);
+    border-color: rgba(196, 255, 0, 0.4);
+}
+
+.esteira-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+@media (max-width: 768px) {
+    .esteira-card {
+        width: 140px;
+    }
+}
+
+/* ==============================================
+   BLOCO DE PREÇO — CTA Section
+   ============================================== */
+.preco-bloco {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 28px;
+    padding: 28px 36px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(196, 255, 0, 0.2);
+    border-radius: 16px;
+}
+
+.preco-de {
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+}
+
+.preco-riscado {
+    text-decoration: line-through;
+    color: #666;
+    font-weight: 600;
+}
+
+.preco-parcelado {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-top: 4px;
+}
+
+.preco-destaque {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    display: block;
+    line-height: 1.1;
+    margin-top: 4px;
+}
+
+.preco-avista {
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+    margin-top: 4px;
+}
+
+.preco-avista strong {
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .membros-section {
+        margin-top: 50px;
+    }
+    .caminho-section {
+        margin-top: 50px;
+    }
+    .preco-bloco {
+        padding: 20px 20px;
+    }
+    .preco-destaque {
+        font-size: 1.8rem;
+    }
+}
+
+/* ==============================================
+   SEÇÃO PITCH — Oferta Completa
+   ============================================== */
+.pitch-section {
+    width: 100%;
+    max-width: 960px;
+    margin: 70px auto 0;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.pitch-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    margin-bottom: 14px;
+    opacity: 0.85;
+}
+
+.pitch-headline {
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 50px;
+}
+
+/* Grid dois painéis */
+.pitch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: start;
+    text-align: left;
+}
+
+/* --- Painel Ticket (esquerdo) --- */
+.pitch-ticket {
+    position: relative;
+    transform: rotate(-2deg);
+    transition: transform 0.4s ease;
+}
+
+.pitch-ticket:hover {
+    transform: rotate(0deg) scale(1.01);
+}
+
+.pitch-ticket-inner {
+    background: linear-gradient(145deg, #111 0%, #0d0d0d 100%);
+    border: 1px solid rgba(196, 255, 0, 0.2);
+    border-radius: 20px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho no ticket */
+.pitch-ticket-inner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(196, 255, 0, 0.04) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.pitch-ticket-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    opacity: 0.7;
+}
+
+.pitch-ticket-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--secondary-text);
+    margin-bottom: 20px;
+}
+
+.pitch-ticket-title strong {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.pitch-ticket-divider {
+    border: none;
+    border-top: 1px dashed rgba(255, 255, 255, 0.12);
+    margin: 20px 0;
+}
+
+.pitch-ticket-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pitch-ticket-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--secondary-text);
+    line-height: 1.4;
+}
+
+.pitch-ticket-list li svg {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    color: var(--primary-color);
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.pitch-ticket-bonus-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+}
+
+.pitch-bonus-list li {
+    color: var(--secondary-text);
+    opacity: 0.9;
+}
+
+.pitch-bonus-list li svg {
+    color: #f0c040;
+}
+
+/* --- Painel Preço (direito) --- */
+.pitch-preco-painel {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(196, 255, 0, 0.18);
+    border-radius: 20px;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+}
+
+.pitch-de {
+    font-size: 0.85rem;
+    color: var(--secondary-text);
+}
+
+.pitch-riscado {
+    text-decoration: line-through;
+    color: #555;
+    font-weight: 600;
+}
+
+.pitch-parcelado {
+    font-size: 0.95rem;
+    color: var(--secondary-text);
+    margin-top: 10px;
+}
+
+.pitch-valor {
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 4px 0 0;
+    text-shadow: 0 0 30px rgba(196, 255, 0, 0.3);
+}
+
+.pitch-avista {
+    font-size: 0.88rem;
+    color: var(--secondary-text);
+    margin-bottom: 8px;
+}
+
+.pitch-avista strong {
+    color: var(--text-color);
+}
+
+.pitch-cta {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1rem;
+    padding: 18px 24px;
+}
+
+/* Métodos de pagamento */
+.pitch-pagamento {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.pitch-bandeiras {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pitch-bandeiras span {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--secondary-text);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.pitch-selos {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pitch-selo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.65rem;
+    color: var(--secondary-text);
+    opacity: 0.7;
+}
+
+.pitch-selo svg {
+    width: 18px;
+    height: 18px;
+    color: var(--primary-color);
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .pitch-section {
+        margin-top: 50px;
+        padding: 0 16px;
+    }
+    .pitch-grid {
+        grid-template-columns: 1fr;
+    }
+    .pitch-ticket {
+        transform: none;
+    }
+    .pitch-cta {
+        font-size: 0.88rem;
+        padding: 16px 16px;
     }
 }
